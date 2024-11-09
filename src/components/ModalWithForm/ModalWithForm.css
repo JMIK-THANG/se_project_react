@@ -29,7 +29,7 @@
   position: absolute;
   top: 20px;
   right: 28px;
-  background:url(../src)
+  
 }
 .modal__content {
   background-color: #fff;
@@ -81,4 +81,11 @@
   background: rgba(0, 0, 0, 0.3);
   padding: 8px 13px;
   align-self: flex-start;
+}
+
+/* preview */
+.content__modal_type_image{ 
+      border:none; 
+      width:40px; 
+      height:40px; 
 }
