@@ -1,4 +1,4 @@
-export const weatherConditions = [
+export const weatherOptions = [
   {
     day: true,
     condition: "clear",

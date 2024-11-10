@@ -1,8 +1,9 @@
 .header {
   display: flex;
   align-items: center;
-  margin: 32px 0 28px;
+  margin: 0 0 28px;
   height: 40px;
+  padding-top:32px; 
 }
 .header__add-clothes-btn {
   margin-left: auto;
