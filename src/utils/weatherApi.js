@@ -1,5 +1,5 @@
 export const getWeather = ({ lat, lon }, APIkey) => {
-  fetch(
+  return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`
   ).then((res) => {
     if (res.ok) {
@@ -8,4 +8,26 @@ export const getWeather = ({ lat, lon }, APIkey) => {
       return Promise.reject("Err: ${res.status");
     }
   });
+};
+export const filterWeatherData = (data) => {
+  const result = {};
+  result.city = data.name;
+  result.temp = { F: data.main.temp };
+  result.type = getWeatherType(result.temp.F);
+  result.condition = data.weather[0].main.toLowerCase();
+  result.isDay = isDay(data.sys);
+  return result;
+};
+const isDay = ({ sunrise, sunset }, now) => {
+//   const now = Date.now(data.sys, date.now);
+  return sunrise < now && now < sunset * 1000;
+};
+const getWeatherType = (temperature) => {
+  if (temperature >= 86) {
+    return "hot";
+  } else if (temperature >= 66 && temperature < 86) {
+    return "warm";
+  } else {
+    return "cold";
+  }
 };
