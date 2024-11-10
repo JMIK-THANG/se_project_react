@@ -10,7 +10,7 @@ import { coordinates, APIkey } from "../../utils/constants";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { F: 999},
+    temp: { F: 999 },
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
@@ -44,6 +44,7 @@ function App() {
           title="New garment"
           buttonText="Add garment"
           activeModal={activeModal}
+          isOpen={activeModal === "add-garment"}
           handleCloseClick={closeActiveModal}
         >
           <label htmlFor="name" className="modal__label">
@@ -70,21 +71,36 @@ function App() {
               htmlFor="hot"
               className="modal__label modal___label_type_radio"
             >
-              <input type="radio" className="modal__radio-input" id="hot" />
+              <input
+                name="radioButton"
+                type="radio"
+                className="modal__radio-input"
+                id="hot"
+              />
               Hot
             </label>
             <label
               htmlFor="warm"
               className="modal__label modal___label_type_radio"
             >
-              <input type="radio" className="modal__radio-input" id="warm" />
+              <input
+                name="radioButton"
+                type="radio"
+                className="modal__radio-input"
+                id="warm"
+              />
               Warm
             </label>
             <label
               htmlFor="cold"
               className="modal__label modal___label_type_radio"
             >
-              <input type="radio" className="modal__radio-input" id="cold" />
+              <input
+                name="radioButton"
+                type="radio"
+                className="modal__radio-input"
+                id="cold"
+              />
               Cold
             </label>
           </fieldset>
