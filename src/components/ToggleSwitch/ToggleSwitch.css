@@ -24,13 +24,15 @@
 }
 .switch__slider-F {
   left: 24px;
+  transition:all .1s ease-in-out; 
 }
 .switch__slider-C {
   left: 1px;
+  transition:all .1s ease-in-out; 
 }
 
 .switch__active {
-  color: #fff;
+  color: #f3f3f3;
   font-size: 14px;
 }
 .switch__temp-C {
