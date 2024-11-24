@@ -34,10 +34,17 @@
 .modal__content {
   background-color: #fff;
   position: relative;
-  padding: 28px 28px 36px;
   border-radius: 20px;
   width: 496px;
+  padding: 28px 28px 36px;
 }
+.modal__content_type_image {
+  width: 500px;
+  height: 610px;
+  border-radius: 16px;
+  padding:0;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -50,7 +57,7 @@
   border: none;
   border-bottom: 1px solid #000;
   width: 100%;
-  outline:none; 
+  outline: none;
 }
 
 .modal__radio-button {
