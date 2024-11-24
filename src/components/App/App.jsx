@@ -10,6 +10,7 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../Contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import { getItems } from "../../utils/Api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -20,7 +21,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
+  const [clothingItems, setClothingItems] = useState([]);
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -33,9 +34,16 @@ function App() {
     setSelectedCard(card);
   };
   const onAddItem = (item) => {
-    console.log(item);
-    console.log("I was submitted");
+    // call the api function
+    // .then
+    // add the new item
+    setClothingItems((prevItems) => {
+      return [item, ...prevItems];
+    });
+    console.log("I was submitted", item);
   };
+
+  console.log(clothingItems.length);
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -47,6 +55,13 @@ function App() {
         setWeatherData(filterData);
       })
       .catch(console.error);
+  }, []);
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch();
   }, []);
   return (
     <div className="page">
@@ -62,6 +77,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
                 />
               }
             />
