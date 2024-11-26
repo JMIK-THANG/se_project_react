@@ -1,5 +1,4 @@
 import closeBtn from "../../images/closeBtn.svg";
-
 import "./ItemModal.css";
 
 function ItemModal({
