@@ -10,7 +10,8 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../Contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
-import { getItems } from "../../utils/Api";
+import { getItems, addItem, deleteItem } from "../../utils/Api";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -22,6 +23,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [confirmDelete, setConfirmDelete] = useState([]);
+
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -33,17 +36,28 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-  const onAddItem = (item) => {
-    // call the api function
-    // .then
-    // add the new item
-    setClothingItems((prevItems) => {
-      return [item, ...prevItems];
-    });
-    console.log("I was submitted", item);
+
+  const handleDeleteButtonClick = () => {
+    setActiveModal("delete");
   };
 
-  console.log(clothingItems.length);
+  const onAddItem = (item) => {
+    return addItem(item).then((newItem) => {
+      setClothingItems((prevItems) => {
+        return [newItem, ...prevItems];
+      });
+      closeActiveModal();
+    });
+  };
+
+  const handleDeleteItem = () => {
+     deleteItem(selectedCard);
+    const updatedItems = clothingItems.filter((item) => {
+      return item._id !== selectedCard._id;
+    });
+    setClothingItems(updatedItems);
+    closeActiveModal();
+  };
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -61,7 +75,7 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
-      .catch();
+      .catch(console.err);
   }, []);
   return (
     <div className="page">
@@ -83,7 +97,12 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                />
+              }
             />
           </Routes>
           <AddItemModal
@@ -96,6 +115,13 @@ function App() {
             card={selectedCard}
             onClick={handleCardClick}
             handleCloseClick={closeActiveModal}
+            handleDeleteButtonClick={handleDeleteButtonClick}
+          />
+
+          <ConfirmDeleteModal
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "delete"}
+            onConfirmDeleteClick={handleDeleteItem}
           />
           <Footer />
         </CurrentTemperatureUnitContext.Provider>

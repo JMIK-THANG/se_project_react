@@ -1,8 +1,9 @@
 import React from "react";
-import { defaultClothingItems } from "../../utils/constants";
+// import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-const ClothesSection = ({onCardClick}) => {
+const ClothesSection = ({ onCardClick,clothingItems }) => {
+  console.log(clothingItems);
   return (
     <div className="clothes-section">
       <div className="clothes-section__items">
@@ -10,7 +11,7 @@ const ClothesSection = ({onCardClick}) => {
         <button className="clothes-section__btn">+ Add New</button>
       </div>
       <ul className="clothes-section__list ">
-        {defaultClothingItems.map((item) => {
+        {clothingItems.map((item) => {
           return (
             <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
           );

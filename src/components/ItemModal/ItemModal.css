@@ -2,7 +2,11 @@
   width: 500px;
   height: 610px;
   border-radius: 16px;
-  padding:0;
+  padding: 0;
+}
+.modal__footer {
+  display: flex;
+  align-items: flex-start;
 }
 .modal__caption {
   font-size: 20px;
@@ -21,4 +25,19 @@
   margin: 0;
   padding-left: 32px;
   padding-bottom: 32px;
+}
+.modal__delete-button {
+  color: #ff4d00;
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  padding-top: 20px;
+  padding-right: 32px;
+}
+
+.modal__image {
+  width: 100%;
 }
