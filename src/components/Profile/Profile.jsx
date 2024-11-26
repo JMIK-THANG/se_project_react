@@ -14,6 +14,7 @@ function Profile({ onCardClick, clothingItems,handleAddClick }) {
           clothingItems={clothingItems}
           onCardClick={onCardClick}
           handleAddClick={handleAddClick}
+          
         />
       </section>
     </div>

@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ handleCloseClick, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [weatherType, setWeatherType] = useState("");
+  const [weather, setWeather] = useState("");
 
   const handleNameChange = (e) => {
     const nameInput = e.target.value;
@@ -18,12 +18,12 @@ const AddItemModal = ({ handleCloseClick, onAddItem, isOpen }) => {
 
   const handleWeatherTypeChange = (e) => {
     const typeSelected = e.target.value;
-    setWeatherType(typeSelected);
+    setWeather(typeSelected);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return onAddItem({ name, imageUrl, weatherType })
+    return onAddItem({ name, imageUrl, weather })
       .then(() => {})
       .catch((err) => {
         console.log(err);
