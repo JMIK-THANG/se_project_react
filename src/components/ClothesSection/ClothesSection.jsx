@@ -2,13 +2,13 @@ import React from "react";
 // import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-const ClothesSection = ({ onCardClick,clothingItems }) => {
-  console.log(clothingItems);
+const ClothesSection = ({ onCardClick, clothingItems, handleAddClick }) => {
+  console.log("Clothing Items",clothingItems);
   return (
     <div className="clothes-section">
       <div className="clothes-section__items">
         <p className="clothes-section__item">Your Items</p>
-        <button className="clothes-section__btn">+ Add New</button>
+        <button onClick={handleAddClick} className="clothes-section__btn">+ Add New</button>
       </div>
       <ul className="clothes-section__list ">
         {clothingItems.map((item) => {

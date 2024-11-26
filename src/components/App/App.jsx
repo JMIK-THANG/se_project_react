@@ -23,7 +23,6 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [confirmDelete, setConfirmDelete] = useState([]);
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -101,6 +100,7 @@ function App() {
                 <Profile
                   clothingItems={clothingItems}
                   onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
