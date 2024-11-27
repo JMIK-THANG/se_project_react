@@ -2,10 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 670px;
+  max-width: 670px;
+  height:280px;
   border-radius: 20px;
   width: 100%;
-  /* box-sizing: border-box; */
+  background-color: white;
+  box-sizing: border-box;
 }
 .modal__delete-description {
   display: block;
@@ -18,7 +20,7 @@
   padding-top:10px;
 }
 .modal__delete-confirm {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   width: 100%;
   color: #ff4d00;
   font-size: 20px;
@@ -27,6 +29,7 @@
   border: none;
   background-color: transparent;
   padding-top: 40px;
+  
 }
 .modal__delete-cancel {
   display: flex;

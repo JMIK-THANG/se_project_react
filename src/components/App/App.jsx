@@ -23,6 +23,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -41,40 +42,59 @@ function App() {
   };
 
   const onAddItem = (item) => {
-    return addItem(item).then((newItem) => {
-      setClothingItems((prevItems) => {
-        return [newItem, ...prevItems];
-      });
-      closeActiveModal();
-    });
+    setIsLoading(true);
+    return addItem(item)
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.err)
+      .finally(() => setIsLoading(false));
   };
 
   const handleDeleteItem = () => {
-    deleteItem(selectedCard);
-    const updatedItems = clothingItems.filter((item) => {
-      return item._id !== selectedCard._id;
-    });
-    setClothingItems(updatedItems);
-    closeActiveModal();
+    setIsLoading(true);
+    console.log("==============", selectedCard);
+    deleteItem(selectedCard)
+      .then((res) => {
+        const updatedItems = clothingItems.filter(
+          (item) => item._id !== selectedCard._id
+        );
+        setClothingItems(updatedItems);
+      })
+      .catch(console.err)
+      .finally(() => {
+        setIsLoading(false);
+        closeActiveModal();
+      });
   };
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
+
   useEffect(() => {
+    setIsLoading(true);
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
   useEffect(() => {
+    setIsLoading(true);
     getItems()
       .then((data) => {
         setClothingItems(data);
       })
-      .catch(console.err);
+      .catch(console.err)
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
   return (
     <div className="page">
@@ -106,6 +126,7 @@ function App() {
             />
           </Routes>
           <AddItemModal
+            buttonText={isLoading ? "Adding..." : "Add"}
             isOpen={activeModal === "add-garment"}
             handleCloseClick={closeActiveModal}
             onAddItem={onAddItem}
@@ -119,6 +140,7 @@ function App() {
           />
 
           <ConfirmDeleteModal
+            buttonText={isLoading ? "Deleting..." : "Yes, Delete Item"}
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "delete"}
             onConfirmDeleteClick={handleDeleteItem}
@@ -130,4 +152,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;

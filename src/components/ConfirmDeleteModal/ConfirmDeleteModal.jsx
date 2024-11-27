@@ -5,11 +5,12 @@ import "./ConfirmDeleteModal.css";
 const ConfirmDeleteModal = ({
   handleCloseClick,
   isOpen,
+  buttonText,
   onConfirmDeleteClick,
 }) => {
   return (
     <div className={`modal modal__delete ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content modal__content_type_delete">
+      <div className="modal_content modal_content_type_delete">
         <button
           onClick={handleCloseClick}
           type="button"
@@ -27,7 +28,7 @@ const ConfirmDeleteModal = ({
             type="button"
             className="modal__delete-confirm"
           >
-            Yes, delete item
+            {buttonText}
           </button>
           <button
             onClick={handleCloseClick}
