@@ -24,10 +24,10 @@ const AddItemModal = ({ handleCloseClick, onAddItem, isOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     return onAddItem({ name, imageUrl, weather })
-      .then(() => {})
-      .catch((err) => {
-        console.log(err);
-      });
+      // .then(() => {})
+      // .catch((err) => {
+      //   console.log(err);
+      // });
   };
   return (
     <ModalWithForm

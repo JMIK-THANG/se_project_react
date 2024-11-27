@@ -7,8 +7,7 @@ import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperature
 
 function Main({ weatherData, onCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  console.log("===");
-  console.log(clothingItems);
+
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -23,7 +22,7 @@ function Main({ weatherData, onCardClick, clothingItems }) {
         <ul className="cards__list">
           {clothingItems
             .filter((item) => {
-              console.log(item.weather, weatherData.type);
+              item.weather, weatherData.type;
               return item.weather === weatherData.type;
             })
             .map((item) => {
