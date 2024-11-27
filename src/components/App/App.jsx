@@ -54,7 +54,6 @@ function App() {
 
   const handleDeleteItem = () => {
     setIsLoading(true);
-    console.log("==============", selectedCard);
     deleteItem(selectedCard)
       .then((res) => {
         const updatedItems = clothingItems.filter(
