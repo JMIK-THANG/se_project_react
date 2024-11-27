@@ -13,12 +13,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Dress.png?etag=1f9cd32a311ab139cab43494883720bf"
     },
     {
-      "_id": 6,
-      "name": "Jacket",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png?etag=f4bb188deaa25ac84ce2338be2d404ad"
-    },
-    {
       "_id": 7,
       "name": "Jeans",
       "weather": "warm",
@@ -83,6 +77,12 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8",
       "weatherType": "warm",
       "_id": 19
+    },
+    {
+      "name": "Snow",
+      "imageUrl": "https://images.unsplash.com/photo-1704371741930-982e834c664d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhcm0lMjBjbG90aGVzfGVufDB8fDB8fHww",
+      "weather": "cold",
+      "_id": 20
     }
   ]
 }

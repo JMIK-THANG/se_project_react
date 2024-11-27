@@ -94,5 +94,4 @@ const AddItemModal = ({ handleCloseClick, onAddItem, isOpen, buttonText }) => {
     </ModalWithForm>
   );
 };
-
-export default AddItemModal;
+export default AddItemModal;
