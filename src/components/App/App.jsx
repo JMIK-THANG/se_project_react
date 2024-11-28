@@ -63,13 +63,13 @@ function App() {
           (item) => item._id !== selectedCard._id
         );
         setClothingItems(updatedItems);
+        closeActiveModal();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
-        closeActiveModal();
       });
   };
 
@@ -78,14 +78,13 @@ function App() {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
       })
-      .catch((err) => {
-        console.err(err);
+      .catch((error) => {
+        console.error(error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -93,7 +92,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
     getItems()
       .then((data) => {
         setClothingItems(data);
@@ -107,18 +105,30 @@ function App() {
   }, []);
 
   // ================= Add Esc key listener
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     if (event.key === "Escape") {
+  //       closeActiveModal();
+  //     }
+  //   };
+
+  //   window.addEventListener("keydown", handleKeyDown);
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
+    if (!activeModal) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
         closeActiveModal();
       }
     };
-
-    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [activeModal]);
   return (
     <div className="page">
       <div className="page__content">

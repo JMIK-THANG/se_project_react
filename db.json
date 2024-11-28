@@ -1,12 +1,6 @@
 {
   "items": [
     {
-      "_id": 3,
-      "name": "Coat",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4"
-    },
-    {
       "_id": 4,
       "name": "Dress",
       "weather": "hot",
@@ -17,12 +11,6 @@
       "name": "Jeans",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jeans.png?etag=58345e8bef1ce5f95ac882e71d309e6c"
-    },
-    {
-      "_id": 9,
-      "name": "Sandals",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sandals.png?etag=9bea85a77c0306586d2b71a33b626d41"
     },
     {
       "_id": 10,
@@ -41,12 +29,6 @@
       "name": "Skirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Skirt.png?etag=27a6bea7e1b63218820d615876fa31d1"
-    },
-    {
-      "_id": 13,
-      "name": "Sneakers",
-      "weather": "warm",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f"
     },
     {
       "_id": 14,
@@ -71,6 +53,18 @@
       "imageUrl": "https://images.unsplash.com/photo-1704371741930-982e834c664d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhcm0lMjBjbG90aGVzfGVufDB8fDB8fHww",
       "weather": "cold",
       "_id": 20
+    },
+    {
+      "name": "CAke",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1731951688289-1de7eb23bdd1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8",
+      "weather": "cold",
+      "_id": 25
+    },
+    {
+      "name": "Cake",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1731951688289-1de7eb23bdd1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8",
+      "weather": "warm",
+      "_id": 26
     }
   ]
 }

@@ -1,13 +1,7 @@
+import { request } from "./Api.js";
 export const getWeather = ({ lat, lon }, APIkey) => {
-  return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=imperial`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject("Err: ${res.status");
-    }
-  });
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=imperial`;
+  return request(url);
 };
 export const filterWeatherData = (data) => {
   const result = {};
