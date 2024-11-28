@@ -85,7 +85,7 @@ function App() {
         setWeatherData(filterData);
       })
       .catch((err) => {
-        console.log(err);
+        console.err(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -174,5 +174,4 @@ function App() {
     </div>
   );
 }
-
-export default App;
+export default App;
