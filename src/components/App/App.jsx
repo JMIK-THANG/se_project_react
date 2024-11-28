@@ -28,6 +28,7 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -48,28 +49,32 @@ function App() {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
       })
-      .catch(console.err)
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => setIsLoading(false));
   };
 
   const handleDeleteItem = () => {
     setIsLoading(true);
     deleteItem(selectedCard)
-      .then((res) => {
+      .then(() => {
         const updatedItems = clothingItems.filter(
           (item) => item._id !== selectedCard._id
         );
         setClothingItems(updatedItems);
       })
-      .catch(console.err)
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
         closeActiveModal();
       });
   };
+
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    setCurrentTemperatureUnit((prev) => (prev === "C" ? "F" : "C"));
   };
 
   useEffect(() => {
@@ -79,21 +84,40 @@ function App() {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
+
   useEffect(() => {
     setIsLoading(true);
     getItems()
       .then((data) => {
         setClothingItems(data);
       })
-      .catch(console.err)
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
+  }, []);
+
+  // ================= Add Esc key listener
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
   return (
     <div className="page">
