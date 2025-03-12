@@ -1,0 +1,41 @@
+.modal__delete-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 670px;
+  width: 100%;
+  height: 280px;
+  border-radius: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 60px 151px;
+}
+.modal__delete-description {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.modal__delete-confirm {
+  box-sizing: border-box;
+  width: 100%;
+  color: #ff4d00;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+  padding-top: 40px;
+}
+.modal__delete-cancel {
+  display: flex;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding-top: 24px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}

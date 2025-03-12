@@ -1,0 +1,23 @@
+.modal__login-btn { 
+      font-family: "Cabinet Grotesk", sans-serif; 
+      font-weight:700; 
+      font-size:16px; 
+      line-height: 20px; 
+      color: #FFFFFF; 
+      padding:8px 16px; 
+      background: rgba(0,0,0,0.3); 
+      border-radius: 4px; 
+      border:none; 
+      margin-right: 12px; 
+}
+.modal__signup-btn{ 
+      border:none; 
+      font-family: "Cabinet Grotesk", sans-serif; 
+      font-weight: 16px; 
+      line-height: 20px; 
+      font-weight: 700; 
+      background: transparent; 
+      color: rgba(0,0,0,0.5); 
+
+      
+}
