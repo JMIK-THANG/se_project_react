@@ -22,9 +22,7 @@ const loginModal = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit login modal");
     handleLogin(data);
-    
   };
   return (
     <ModalWithForm
@@ -59,10 +57,18 @@ const loginModal = ({
       />
 
       <div className="modal__login-container">
-        <button type="submit" className="modal__login-btn">
+        <button
+          type="submit"
+          className="modal__login-btn"
+          onClick={handleCloseClick}
+        >
           Log in
         </button>
-        <button onClick={onClickRegister} type="button" className="modal__signup-btn">
+        <button
+          onClick={onClickRegister}
+          type="button"
+          className="modal__signup-btn"
+        >
           or Register
         </button>
       </div>

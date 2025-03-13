@@ -3,7 +3,6 @@ import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 const ClothesSection = ({ onCardClick, clothingItems, handleAddClick }) => {
-  console.log("clothingItems", clothingItems);
   return (
     <div className="clothes-section">
       <div className="clothes-section__items">

@@ -10,7 +10,7 @@ function ItemModal({
   handleDeleteButtonClick,
 }) {
   const currentUser  = useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner === currentUser._id;
+  const isOwn = selectedCard.owner === currentUser._id; // id problem
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">

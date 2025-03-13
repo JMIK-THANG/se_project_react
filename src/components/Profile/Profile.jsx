@@ -9,11 +9,12 @@ function Profile({
   onCardClick,
   clothingItems,
   handleAddClick,
+  logout,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar editProfileClick={editProfileClick} />
+        <SideBar editProfileClick={editProfileClick} logout={logout} />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
@@ -26,6 +27,5 @@ function Profile({
   );
 }
 export default Profile;
-
 
 // Git Guides - git init

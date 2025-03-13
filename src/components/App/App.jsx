@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/itemModal";
 import Footer from "../Footer/Footer";
-import { setToken, getToken } from "../../utils/token";
+import { setToken, getToken, removeToken } from "../../utils/token";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
@@ -37,7 +37,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
@@ -77,7 +77,12 @@ function App() {
       }
     });
   };
-
+  const logout = () => {
+    removeToken();
+    setCurrentUser({});
+    setIsLoggedIn(false);
+    navigate("/");
+  };
   const handleRegeisterClick = () => {
     setActiveModal("Sign Up");
   };
@@ -121,8 +126,10 @@ function App() {
   };
   const onAddItem = (item) => {
     setIsLoading(true);
-    return addItem(item)
+    const token = getToken();
+    return addItem(item, token)
       .then((newItem) => {
+        console.log("new Item", newItem);
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
       })
@@ -275,6 +282,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
+                      logout={logout}
                     />
                   </ProtectedRoute>
                 }

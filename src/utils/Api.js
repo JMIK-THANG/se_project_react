@@ -11,11 +11,12 @@ export function checkResponse(res) {
 function getItems() {
   return request(`${baseUrl}/items`);
 }
-function addItem(item) {
+function addItem(item, token) {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(item),
   });
