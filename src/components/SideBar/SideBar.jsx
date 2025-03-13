@@ -20,7 +20,7 @@ function SideBar({ editProfileClick }) {
       </div>
       <div className="sidebar__button">
         <button className="sidebar__edit-button" onClick={editProfileClick}>
-          Edit Profile
+          Change profile data
         </button>
         <button type="button" className="sidebar__logout-button">
           Log Out
