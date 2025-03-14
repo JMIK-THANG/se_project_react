@@ -9,12 +9,33 @@ const loginModal = ({
   onClickRegister,
 }) => {
   const [data, setData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+  const [isValid, setIsValid] = useState({
+    email: false,
+    password: false,
+  });
+
+  const buttonEnabled = Object.keys(isValid).every((key) => {
+    return isValid[key];
+  }); //[email, password]
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // if there is invalid input inside an input element, we want to store the default validation message inside of the errors state
+    setErrors((prevErrors) => {
+      return { ...prevErrors, [name]: e.target.validationMessage };
+    });
+
+    setIsValid((prev) => {
+      return { ...prev, [name]: e.target.validity.valid };
+    });
+
     setData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -24,6 +45,7 @@ const loginModal = ({
     e.preventDefault();
     handleLogin(data);
   };
+
   return (
     <ModalWithForm
       title="Log in"
@@ -35,7 +57,7 @@ const loginModal = ({
         Email*
       </label>
       <input
-        type="text"
+        type="email"
         name="email"
         id="email"
         className="modal__input"
@@ -43,6 +65,7 @@ const loginModal = ({
         value={data.email}
         onChange={handleChange}
       />
+      <span className="modal__span-email">{errors.email}</span>
       <label htmlFor="password" className="modal__label">
         Password*
       </label>
@@ -54,13 +77,18 @@ const loginModal = ({
         placeholder="password"
         value={data.password}
         onChange={handleChange}
+        minLength={5}
+        maxLength={30}
       />
-
+      <span className="modal__span-password">{errors.password}</span>
       <div className="modal__login-container">
         <button
           type="submit"
-          className="modal__login-btn"
+          className={`modal__login-btn ${
+            buttonEnabled ? "modal__login-btn_enabled" : ""
+          }`}
           onClick={handleCloseClick}
+          disabled={!buttonEnabled}
         >
           Log in
         </button>

@@ -13,13 +13,12 @@ function Header({
   handleLoginClick,
   isLoggedIn,
 }) {
-  const currentUser  = useContext(CurrentUserContext);
-console.log(currentUser)
+  const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-console.log(isLoggedIn);
   return (
     <header className="header">
       <Link to="/">
@@ -29,14 +28,15 @@ console.log(isLoggedIn);
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
+      {isLoggedIn && (
+        <button
+          onClick={handleAddClick}
+          type="button"
+          className="header__add-clothes-btn"
+        >
+          + Add clothes
+        </button>
+      )}
       {!isLoggedIn && (
         <div className="header__registration">
           <button onClick={handleRegisterClick} className="header__signup">

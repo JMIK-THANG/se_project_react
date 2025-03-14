@@ -5,7 +5,6 @@ import "./ConfirmDeleteModal.css";
 const ConfirmDeleteModal = ({
   handleCloseClick,
   isOpen,
-  buttonText,
   onConfirmDeleteClick,
 }) => {
   return (
@@ -28,7 +27,7 @@ const ConfirmDeleteModal = ({
             type="button"
             className="modal__delete-confirm"
           >
-            {buttonText}
+            Yes, delete item
           </button>
           <button
             onClick={handleCloseClick}

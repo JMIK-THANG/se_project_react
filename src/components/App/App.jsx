@@ -18,6 +18,7 @@ import {
   signup,
   signin,
   checkToken,
+  updateUserProfile
 } from "../../utils/Api";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
@@ -48,6 +49,17 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+// Handle Edit Profile
+  const handleEditProfile = ({ name, avatar }) => {
+    const token = getToken();
+    updateUserProfile(token, { name, avatar })
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeActiveModal()
+      })
+      .catch((err) => setError(err.message || "name and avatar required."));
+  };
+
   const handleRegistration = ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
@@ -70,10 +82,12 @@ function App() {
       console.log(data);
       if (data.token) {
         setToken(data.token);
-        setCurrentUser(data);
-        setIsLoggedIn(true);
-        const redirectPath = location.state?.from?.pathname || "/my-profile";
-        navigate(redirectPath);
+        checkToken(data.token).then((data) => {
+          setIsLoggedIn(true);
+          setCurrentUser(data);
+          const redirectPath = location.state?.from?.pathname || "/profile";
+          navigate(redirectPath);
+        });
       }
     });
   };
@@ -322,6 +336,7 @@ function App() {
               isOpen={activeModal === "edit-profile"}
               handleCloseClick={closeActiveModal}
               editProfileClick={editProfileClick}
+              handleEditProfile={handleEditProfile}
             />
             <Footer />
           </CurrentTemperatureUnitContext.Provider>

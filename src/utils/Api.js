@@ -54,7 +54,7 @@ function checkToken(token) {
   });
 }
 function updateUserProfile(token, userData) {
-  return request("${baseUrl}/users/me", {
+  return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
