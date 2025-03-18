@@ -21,9 +21,13 @@ function addItem(item, token) {
     body: JSON.stringify(item),
   });
 }
-function deleteItem(item) {
+function deleteItem(item, token) {
   return request(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 }
 function signup(data) {
@@ -63,6 +67,24 @@ function updateUserProfile(token, userData) {
     body: JSON.stringify(userData),
   });
 }
+function addCardLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+function removeCardLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    header: { 
+      "Content-Type": "application/json", 
+      authorization: `Bearer${token}`
+    }
+  });
+}
 export {
   getItems,
   addItem,
@@ -71,4 +93,6 @@ export {
   signin,
   checkToken,
   updateUserProfile,
+  addCardLike, 
+  removeCardLike
 };

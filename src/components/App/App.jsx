@@ -18,7 +18,9 @@ import {
   signup,
   signin,
   checkToken,
-  updateUserProfile
+  updateUserProfile,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/Api";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
@@ -49,13 +51,13 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-// Handle Edit Profile
+  // Handle Edit Profile
   const handleEditProfile = ({ name, avatar }) => {
     const token = getToken();
     updateUserProfile(token, { name, avatar })
       .then((userData) => {
         setCurrentUser(userData);
-        closeActiveModal()
+        closeActiveModal();
       })
       .catch((err) => setError(err.message || "name and avatar required."));
   };
@@ -155,7 +157,8 @@ function App() {
 
   const handleDeleteItem = () => {
     setIsLoading(true);
-    deleteItem(selectedCard)
+    const token = getToken();
+    deleteItem(selectedCard, token)
       .then(() => {
         const updatedItems = clothingItems.filter(
           (item) => item._id !== selectedCard._id
@@ -236,31 +239,28 @@ function App() {
         [navigate, location.state?.from?.pathname]
       );
   }, []);
-  // const handleCardLike = ({ id, isLiked }) => {
-  //   const token = localStorage.getItem("jwt");
-  //   // Check if this card is not currently liked
-  //   !isLiked
-  //     ? // if so, send a request to add the user's id to the card's likes array
-  //       api
-  //         // the first argument is the card's id
-  //         .addCardLike(id, token)
-  //         .then((updatedCard) => {
-  //           setClothingItems((cards) =>
-  //             cards.map((item) => (item._id === id ? updatedCard : item))
-  //           );
-  //         })
-  //         .catch((err) => console.log(err))
-  //     : // if not, send a request to remove the user's id from the card's likes array
-  //       api
-  //         // the first argument is the card's id
-  //         .removeCardLike(id, token)
-  //         .then((updatedCard) => {
-  //           setClothingItems((cards) =>
-  //             cards.map((item) => (item._id === id ? updatedCard : item))
-  //           );
-  //         })
-  //         .catch((err) => console.log(err));
-  // };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = getToken();
+    // Check if this card is not currently liked
+    !isLiked
+      ? addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+
+        removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
   return (
     <div className="page">
       <div className="page__content">
@@ -283,7 +283,7 @@ function App() {
                     weatherData={weatherData}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
-                    // handleCardLike={handleCardLike}
+                    handleCardLike={handleCardLike}
                   />
                 }
               />

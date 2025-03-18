@@ -27,14 +27,13 @@ const loginModal = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // if there is invalid input inside an input element, we want to store the default validation message inside of the errors state
-    setErrors((prevErrors) => {
-      return { ...prevErrors, [name]: e.target.validationMessage };
-    });
+    // setErrors((prevErrors) => {
+    //   return { ...prevErrors, [name]: e.target.validationMessage };
+    // });
 
-    setIsValid((prev) => {
-      return { ...prev, [name]: e.target.validity.valid };
-    });
+    // setIsValid((prev) => {
+    //   return { ...prev, [name]: e.target.validity.valid };
+    // });
 
     setData((prevData) => ({
       ...prevData,
@@ -77,18 +76,19 @@ const loginModal = ({
         placeholder="password"
         value={data.password}
         onChange={handleChange}
-        minLength={5}
+        minLength={4}
         maxLength={30}
       />
       <span className="modal__span-password">{errors.password}</span>
       <div className="modal__login-container">
         <button
           type="submit"
-          className={`modal__login-btn ${
-            buttonEnabled ? "modal__login-btn_enabled" : ""
-          }`}
+          className="modal__login-btn"
+          // className={`modal__login-btn ${
+          //   buttonEnabled ? "modal__login-btn_enabled" : ""
+          // }`}
           onClick={handleCloseClick}
-          disabled={!buttonEnabled}
+          // disabled={!buttonEnabled}
         >
           Log in
         </button>

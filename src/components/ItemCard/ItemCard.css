@@ -31,3 +31,7 @@
 .card__image {
   width: 100%;
 }
+.card__like-button{ 
+  background:transparent; 
+  border:none; 
+}
