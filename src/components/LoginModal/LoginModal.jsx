@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const loginModal = ({
+const LoginModal = ({
   handleCloseClick,
   isOpen,
   handleLogin,
@@ -76,4 +76,4 @@ const loginModal = ({
   );
 };
 
-export default loginModal;
+export default LoginModal;
