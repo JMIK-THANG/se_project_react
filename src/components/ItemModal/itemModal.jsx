@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import closeBtn from "../../images/closeBtn.svg";
-import "./ItemModal.css";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 
 function ItemModal({

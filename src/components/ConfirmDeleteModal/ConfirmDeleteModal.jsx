@@ -1,6 +1,5 @@
 import React from "react";
 import closeBtn from "../../images/closeBtn.svg";
-import "./ConfirmDeleteModal.css";
 
 const ConfirmDeleteModal = ({
   handleCloseClick,

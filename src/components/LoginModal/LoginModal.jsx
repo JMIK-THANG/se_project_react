@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./LoginModal.css";
 
 const loginModal = ({
   handleCloseClick,
@@ -12,28 +11,9 @@ const loginModal = ({
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-  const [isValid, setIsValid] = useState({
-    email: false,
-    password: false,
-  });
-
-  const buttonEnabled = Object.keys(isValid).every((key) => {
-    return isValid[key];
-  }); //[email, password]
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // setErrors((prevErrors) => {
-    //   return { ...prevErrors, [name]: e.target.validationMessage };
-    // });
-
-    // setIsValid((prev) => {
-    //   return { ...prev, [name]: e.target.validity.valid };
-    // });
 
     setData((prevData) => ({
       ...prevData,
@@ -64,7 +44,6 @@ const loginModal = ({
         value={data.email}
         onChange={handleChange}
       />
-      <span className="modal__span-email">{errors.email}</span>
       <label htmlFor="password" className="modal__label">
         Password*
       </label>
@@ -76,19 +55,12 @@ const loginModal = ({
         placeholder="password"
         value={data.password}
         onChange={handleChange}
-        minLength={4}
-        maxLength={30}
       />
-      <span className="modal__span-password">{errors.password}</span>
       <div className="modal__login-container">
         <button
           type="submit"
           className="modal__login-btn"
-          // className={`modal__login-btn ${
-          //   buttonEnabled ? "modal__login-btn_enabled" : ""
-          // }`}
           onClick={handleCloseClick}
-          // disabled={!buttonEnabled}
         >
           Log in
         </button>

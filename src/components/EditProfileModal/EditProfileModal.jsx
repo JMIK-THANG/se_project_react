@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./EditProfileModal.css";
 const EditProfileModal = ({ handleCloseClick, isOpen, handleEditProfile }) => {
   const [userData, setUserData] = useState({
     name: "",
