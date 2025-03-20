@@ -28,7 +28,7 @@ WTWR is a full-stack web application that helps users decide what to wear based 
 - MongoDB
 - JWT for authentication
 
-## Links
+### Links
 
 - [Backend Repository](https://github.com/JMIK-THANG/se_project_express)
 - [Figma Design](https://www.figma.com/file/bfVOvqlLmoKZ5lpro8WWBe/Sprint-14_-WTWR)
