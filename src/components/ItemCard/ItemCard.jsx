@@ -1,23 +1,34 @@
 import "./ItemCard.css";
-import LikeBtn from "../../images/likebutton.png";
+import likeButton from "../../images/likebutton.png";
+import darkLikeButton from "../../images/darkLikeButton.png";
+import CurrentUserContext from "../../Contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ItemCard({ item, onCardClick, handleCardLike }) {
-  console.log("item from itemCard", item);
   const handleCardClick = () => {
     onCardClick(item);
   };
+
+  const currentUser = useContext(CurrentUserContext);
+  const isLiked = item.likes.some((userId) => {
+    return userId === currentUser._id;
+  });
   const handleCardLike2 = () => {
-    handleCardLike({ id: item._id, isLiked: item.isLiked });
+    handleCardLike({ id: item._id, isLiked: isLiked });
   };
   return (
     <li className="card">
       <div className="card__like-name">
         <h2 className="card__name">{item.name}</h2>
+
         <button onClick={handleCardLike2} className="card__like-button">
-          <img src={LikeBtn} alt="card like" className="card__like" />
+          <img
+            src={isLiked ? darkLikeButton : likeButton}
+            alt="card like"
+            className="card__like"
+          />
         </button>
       </div>
-
       <img
         onClick={handleCardClick}
         className="card__image"

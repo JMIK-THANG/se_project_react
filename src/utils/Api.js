@@ -79,10 +79,10 @@ function addCardLike(id, token) {
 function removeCardLike(id, token) {
   return request(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
-    header: { 
-      "Content-Type": "application/json", 
-      authorization: `Bearer${token}`
-    }
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 }
 export {
@@ -93,6 +93,6 @@ export {
   signin,
   checkToken,
   updateUserProfile,
-  addCardLike, 
-  removeCardLike
+  addCardLike,
+  removeCardLike,
 };

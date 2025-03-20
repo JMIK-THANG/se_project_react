@@ -145,7 +145,6 @@ function App() {
     const token = getToken();
     return addItem(item, token)
       .then((newItem) => {
-        console.log("new Item", newItem);
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
       })
@@ -242,7 +241,6 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = getToken();
-    // Check if this card is not currently liked
     !isLiked
       ? addCardLike(id, token)
           .then((updatedCard) => {
@@ -251,9 +249,7 @@ function App() {
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-
-        removeCardLike(id, token)
+      : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
