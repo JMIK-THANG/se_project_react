@@ -4,7 +4,7 @@ import darkLikeButton from "../../images/darkLikeButton.png";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function ItemCard({ item, onCardClick, handleCardLike }) {
+function ItemCard({item, onCardClick, handleCardLike }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
@@ -13,7 +13,7 @@ function ItemCard({ item, onCardClick, handleCardLike }) {
   const isLiked = item.likes.some((userId) => {
     return userId === currentUser._id;
   });
-  const handleCardLike2 = () => {
+  const handleLikeClick = () => {
     handleCardLike({ id: item._id, isLiked: isLiked });
   };
   return (
@@ -21,7 +21,7 @@ function ItemCard({ item, onCardClick, handleCardLike }) {
       <div className="card__like-name">
         <h2 className="card__name">{item.name}</h2>
 
-        <button onClick={handleCardLike2} className="card__like-button">
+        <button onClick={handleLikeClick} className="card__like-button">
           <img
             src={isLiked ? darkLikeButton : likeButton}
             alt="card like"

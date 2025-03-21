@@ -40,7 +40,7 @@ const RegisterModal = ({
       <input
         type="text"
         name="email"
-        id="email"
+        id="register-email"
         className="modal__input"
         placeholder="Email"
         value={data.email}

@@ -293,6 +293,7 @@ function App() {
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       logout={logout}
+                      handleCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
