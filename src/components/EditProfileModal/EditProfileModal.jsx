@@ -26,7 +26,7 @@ const EditProfileModal = ({ handleCloseClick, isOpen, handleEditProfile }) => {
         avatar: currentUser.avatar,
       });
     }
-  },[currentUser]);
+  }, [currentUser]);
   return (
     <ModalWithForm
       title="edit-profile"
@@ -41,7 +41,7 @@ const EditProfileModal = ({ handleCloseClick, isOpen, handleEditProfile }) => {
       <input
         type="text"
         name="name"
-        id="name"
+        id="edit-profile-name"
         className="modal__input"
         placeholder="name"
         value={userData.name}
@@ -51,7 +51,7 @@ const EditProfileModal = ({ handleCloseClick, isOpen, handleEditProfile }) => {
         avatar*
       </label>
       <input
-        id="avatar"
+        id="edit-profile-avatar"
         className="modal__input"
         name="avatar"
         type="url"

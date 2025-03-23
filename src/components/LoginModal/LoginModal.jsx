@@ -38,7 +38,7 @@ const LoginModal = ({
       <input
         type="email"
         name="email"
-        id="login-email"
+        id="login-modal-email"
         className="modal__input"
         placeholder="Email"
         value={data.email}
@@ -48,7 +48,7 @@ const LoginModal = ({
         Password*
       </label>
       <input
-        id="password"
+        id="login-modal-password"
         className="modal__input"
         name="password"
         type="password"
@@ -58,7 +58,6 @@ const LoginModal = ({
       />
       <div className="modal__login-container">
         <button
-          type="submit"
           className="modal__login-btn"
           onClick={handleCloseClick}
         >
@@ -66,7 +65,6 @@ const LoginModal = ({
         </button>
         <button
           onClick={onClickRegister}
-          type="button"
           className="modal__signup-btn"
         >
           or Register

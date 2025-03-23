@@ -84,12 +84,19 @@ function App() {
       console.log(data);
       if (data.token) {
         setToken(data.token);
-        checkToken(data.token).then((data) => {
-          setIsLoggedIn(true);
-          setCurrentUser(data);
-          const redirectPath = location.state?.from?.pathname || "/profile";
-          navigate(redirectPath);
-        });
+        checkToken(data.token)
+          .then((data) => {
+            setIsLoggedIn(true);
+            setCurrentUser(data);
+            closeActiveModal();
+            const redirectPath = location.state?.from?.pathname || "/profile";
+            navigate(redirectPath);
+          })
+          .catch((err) => {
+            console.error("Error fectching user info:", err);
+            setIsLoggedIn(false);
+            setError("Session expired.  Please log in again.");
+          });
       }
     });
   };
@@ -229,14 +236,11 @@ function App() {
         const redirectPath = location.state?.from?.pathname || "/profile";
         navigate(redirectPath);
       })
-      .catch(
-        (err) => {
-          console.error("Error fectching user info:", err);
-          setIsLoggedIn(false);
-          setError("Session expired.  Please log in again.");
-        },
-        [navigate, location.state?.from?.pathname]
-      );
+      .catch((err) => {
+        console.error("Error fectching user info:", err);
+        setIsLoggedIn(false);
+        setError("Session expired.  Please log in again.");
+      });
   }, []);
 
   const handleCardLike = ({ id, isLiked }) => {
