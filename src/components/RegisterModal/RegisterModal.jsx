@@ -34,58 +34,58 @@ const RegisterModal = ({
       handleCloseClick={handleCloseClick}
       handleLoginClick={handleLoginClick}
     >
-      <label htmlFor="email" className="modal__label">
+      <label className="modal__label">
         Email*
+        <input
+          type="text"
+          name="email"
+          id="register-modal-email"
+          className="modal__input"
+          placeholder="Email"
+          value={data.email}
+          onChange={handleChange}
+          autoComplete="email"
+        />
       </label>
-      <input
-        type="text"
-        name="email"
-        id="register-modal-email"
-        className="modal__input"
-        placeholder="Email"
-        value={data.email}
-        onChange={handleChange}
-        autoComplete="email"
-      />
-      <label htmlFor="password" className="modal__label">
+      <label className="modal__label">
         Password*
+        <input
+          id="register-modal-password"
+          className="modal__input"
+          name="password"
+          type="password"
+          placeholder="password"
+          value={data.password}
+          onChange={handleChange}
+          autoComplete="password"
+        />
       </label>
-      <input
-        id="register-modal-password"
-        className="modal__input"
-        name="password"
-        type="password"
-        placeholder="password"
-        value={data.password}
-        onChange={handleChange}
-        autoComplete="password"
-      />
-      <label htmlFor="name" className="modal__label">
+      <label className="modal__label">
         Name
+        <input
+          id="register-modal-name"
+          className="modal__input"
+          name="name"
+          type="text"
+          placeholder="Name"
+          value={data.name}
+          onChange={handleChange}
+          autoComplete="username"
+        />
       </label>
-      <input
-        id="register-modal-name"
-        className="modal__input"
-        name="name"
-        type="text"
-        placeholder="Name"
-        value={data.name}
-        onChange={handleChange}
-        autoComplete="username"
-      />
-      <label htmlFor="avatar" className="modal__label">
+      <label className="modal__label">
         Avatar
+        <input
+          id="register-modal-avatar"
+          className="modal__input"
+          name="avatar"
+          type="url"
+          placeholder="Avatar URL"
+          value={data.avatar}
+          onChange={handleChange}
+          autoComplete="url"
+        />
       </label>
-      <input
-        id="register-modal-avatar"
-        className="modal__input"
-        name="avatar"
-        type="url"
-        placeholder="Avatar URL"
-        value={data.avatar}
-        onChange={handleChange}
-        autoComplete="url"
-      />
       <div className="modal__login-container">
         <button type="submit" className="modal__next-btn">
           next

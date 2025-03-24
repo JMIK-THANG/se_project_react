@@ -32,41 +32,37 @@ const LoginModal = ({
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}
     >
-      <label htmlFor="email" className="modal__label">
+      <label className="modal__label">
         Email*
+        <input
+          type="email"
+          name="email"
+          id="login-modal-email"
+          className="modal__input"
+          placeholder="Email"
+          value={data.email}
+          onChange={handleChange}
+        />
       </label>
-      <input
-        type="email"
-        name="email"
-        id="login-modal-email"
-        className="modal__input"
-        placeholder="Email"
-        value={data.email}
-        onChange={handleChange}
-      />
-      <label htmlFor="password" className="modal__label">
+
+      <label className="modal__label">
         Password*
+        <input
+          id="login-modal-password"
+          className="modal__input"
+          name="password"
+          type="password"
+          placeholder="password"
+          value={data.password}
+          onChange={handleChange}
+        />
       </label>
-      <input
-        id="login-modal-password"
-        className="modal__input"
-        name="password"
-        type="password"
-        placeholder="password"
-        value={data.password}
-        onChange={handleChange}
-      />
+
       <div className="modal__login-container">
-        <button
-          className="modal__login-btn"
-          onClick={handleCloseClick}
-        >
+        <button className="modal__login-btn" onClick={handleCloseClick}>
           Log in
         </button>
-        <button
-          onClick={onClickRegister}
-          className="modal__signup-btn"
-        >
+        <button onClick={onClickRegister} className="modal__signup-btn">
           or Register
         </button>
       </div>

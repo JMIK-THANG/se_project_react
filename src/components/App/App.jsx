@@ -81,7 +81,6 @@ function App() {
       return;
     }
     signin(email, password).then((data) => {
-      console.log(data);
       if (data.token) {
         setToken(data.token);
         checkToken(data.token)

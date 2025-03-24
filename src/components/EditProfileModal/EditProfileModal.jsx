@@ -35,9 +35,8 @@ const EditProfileModal = ({ handleCloseClick, isOpen, handleEditProfile }) => {
       handleCloseClick={handleCloseClick}
       handleEditProfile={handleEditProfile}
     >
-      <label htmlFor="name" className="modal__label">
+      <label className="modal__label">
         name*
-      </label>
       <input
         type="text"
         name="name"
@@ -47,18 +46,19 @@ const EditProfileModal = ({ handleCloseClick, isOpen, handleEditProfile }) => {
         value={userData.name}
         onChange={handleChange}
       />
-      <label htmlFor="avatar" className="modal__label">
-        avatar*
       </label>
-      <input
-        id="edit-profile-avatar"
-        className="modal__input"
-        name="avatar"
-        type="url"
-        placeholder="avatar"
-        value={userData.avatar}
-        onChange={handleChange}
-      />
+      <label className="modal__label">
+        avatar*
+        <input
+          id="edit-profile-avatar"
+          className="modal__input"
+          name="avatar"
+          type="url"
+          placeholder="avatar"
+          value={userData.avatar}
+          onChange={handleChange}
+        />
+      </label>
       <button type="submit" className="modal__save-button">
         Save changes
       </button>
