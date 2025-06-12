@@ -11,6 +11,7 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+
 import {
   getItems,
   addItem,
@@ -134,8 +135,8 @@ function App() {
     setIsLoading(true);
     return signup(data)
       .then((currentUser) => {
-        return signin(data).then((token) => {
-          return checkToken(token).then((user) => {
+        return signin(data.email, data.password).then((data) => {
+          return checkToken(data.token).then((user) => {
             setCurrentUser(user);
             closeActiveModal();
           });
@@ -198,19 +199,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      getItems()
-        .then((data) => {
-          setClothingItems(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, [isLoggedIn]);
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -225,15 +224,15 @@ function App() {
     };
   }, [activeModal]);
 
+  // need to commend
   useEffect(() => {
     const jwt = getToken();
+    console.log(jwt, "useEffect");
     if (!jwt) return;
     checkToken(jwt)
       .then((data) => {
         setIsLoggedIn(true);
         setCurrentUser(data);
-        const redirectPath = location.state?.from?.pathname || "/profile";
-        navigate(redirectPath);
       })
       .catch((err) => {
         console.error("Error fectching user info:", err);

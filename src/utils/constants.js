@@ -116,8 +116,15 @@ export const defaultClothingItems = [
       "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
-export const coordinates = {
+const coordinates = {
   lat: 33.018505,
   lon: -80.175652,
 };
-export const APIkey = "c8489bea2132a0bcd73d0c40fd08fadb";
+const APIkey = "c8489bea2132a0bcd73d0c40fd08fadb";
+
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrjmik.crabdance.com"
+    : "http://localhost:3001";
+
+export { coordinates, APIkey, baseUrl };

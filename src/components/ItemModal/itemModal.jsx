@@ -8,8 +8,9 @@ function ItemModal({
   selectedCard,
   handleDeleteButtonClick,
 }) {
-  const currentUser  = useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner === currentUser._id; 
+  const currentUser = useContext(CurrentUserContext);
+  console.log(selectedCard.owner, currentUser._id);
+  const isOwn = selectedCard.owner === currentUser._id;
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../utils/constants";
 
 export function request(url, options) {
   return fetch(url, options).then(checkResponse);
