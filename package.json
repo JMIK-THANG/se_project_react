@@ -8,7 +8,10 @@
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy":"npm run build", 
+    "deploy":"npm run build && scp -r ./dist/* jmikthang5@wtwrjmik.crabdance.com:/home/jmikthang5/frontend"
+    
   },
   "dependencies": {
     "celebrate": "^15.0.3",
