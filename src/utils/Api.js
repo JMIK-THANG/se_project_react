@@ -4,9 +4,7 @@ export function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 export function checkResponse(res) {
-  if (res.ok) {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  }
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 function getItems() {
   return request(`${baseUrl}/items`);
