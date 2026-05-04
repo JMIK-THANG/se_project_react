@@ -34,7 +34,7 @@ WTWR is a full-stack web application that helps users decide what to wear based 
 - [Figma Design](https://www.figma.com/file/bfVOvqlLmoKZ5lpro8WWBe/Sprint-14_-WTWR)
 
 # Weather Clothing App
-You can check out the live version of the project here: [https://www.wtwrjmik.crabdance.com/]
+You can check out the live version of the project here: [https://se-project-react-tl1m.onrender.com/]
 [Visit the Live Site](https://se-project-react-tl1m.onrender.com/)
 
 
