@@ -1,5 +1,5 @@
 import "./ItemCard.css";
-import likeButton from "../../images/likebutton.png";
+import likeButton from "../../images/Likebutton.png";
 import darkLikeButton from "../../images/darkLikeButton.png";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 import { useContext } from "react";
