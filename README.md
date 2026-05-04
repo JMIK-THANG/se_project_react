@@ -35,7 +35,7 @@ WTWR is a full-stack web application that helps users decide what to wear based 
 
 # Weather Clothing App
 You can check out the live version of the project here: [wtwrjmik.crabdance.com](https://www.wtwrjmik.crabdance.com/)
-[Visit the Live Site](https://www.wtwrjmik.crabdance.com/)
-https://www.wtwrjmik.crabdance.com/
+[Visit the Live Site](https://se-project-react-tl1m.onrender.com/)
+
 
 
